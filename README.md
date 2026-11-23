@@ -53,8 +53,8 @@ Antes de iniciar, verifica que cuentas con las siguientes herramientas instalada
 
 1. Clona este repositorio y entra a la carpeta del proyecto:
    ```bash
-   git clone <URL-DE-TU-REPOSITORIO>
-   cd <NOMBRE-DE-LA-CARPETA>
+   git clone [<URL-DE-TU-REPOSITORIO>](https://github.com/SantiagoDev27/SistemasOperativosProyectoFinal.git)
+   cd Proyecto-final-docker
    ```
 
 2. Construye las imágenes e inicia todos los contenedores en segundo plano:
