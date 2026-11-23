@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparativa F-22 vs J-20 | Ingeniería Aeroespacial</title>
+    <style>
+        :root {
+            --ds-navy: #003c71;
+            --ds-blue: #005386;
+            --ds-accent: #0072ce;
+            --ds-tint: #e8f3fb;
+            --bg-page: #f4f7fa;
+            --bg-surface: #ffffff;
+            --border-light: #dce4ec;
+            --text-primary: #1a242f;
+            --text-secondary: #536270;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Barra superior estilo corporativo */
+        .topbar {
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-light);
+            padding: 0.9rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .topbar-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--ds-navy);
+            letter-spacing: 0.02em;
+        }
+
+        .brand-mark {
+            width: 10px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--ds-accent), var(--ds-navy));
+            border-radius: 2px;
+        }
+
+        .server-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: var(--ds-tint);
+            border: 1px solid #c5dff5;
+            color: var(--ds-navy);
+            padding: 0.35rem 0.9rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #16a34a;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Encabezado Hero limpio en tema claro */
+        .hero {
+            background: linear-gradient(180deg, #ffffff 0%, #eef4f9 100%);
+            border-bottom: 1px solid var(--border-light);
+            padding: 3rem 2rem 2.75rem;
+        }
+
+        .hero-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ds-accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 600;
+            color: var(--ds-navy);
+            line-height: 1.2;
+            margin-bottom: 0.85rem;
+        }
+
+        .hero p {
+            max-width: 720px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* Contenedor principal y tarjetas */
+        .container {
+            max-width: 1180px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 3.5rem;
+            flex: 1;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-top: 4px solid var(--ds-blue);
+            border-radius: 6px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 60, 113, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card.accent-alt {
+            border-top-color: var(--ds-accent);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 60, 113, 0.1);
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--ds-blue);
+            background-color: var(--ds-tint);
+            padding: 0.25rem 0.65rem;
+            border-radius: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .card h2 {
+            font-size: 1.55rem;
+            font-weight: 600;
+            color: var(--ds-navy);
+            margin-bottom: 0.35rem;
+        }
+
+        .role {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+
+        .description {
+            color: var(--text-primary);
+            font-size: 0.98rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .specs-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ds-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .specs-list {
+            list-style: none;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .specs-list li {
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.94rem;
+            color: var(--text-secondary);
+        }
+
+        .specs-list strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.15rem;
+        }
+
+        /* Pie de página minimalista */
+        footer {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border-light);
+            padding: 1.25rem 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="server-status">
+                <span class="status-dot"></span>
+                <span>Servidor: {{INSTANCE_ID}} &nbsp;|&nbsp; Contenedor: {{HOSTNAME}}</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>Lockheed Martin F-22 Raptor vs. Chengdu J-20</h1>
+            <p>
+                Comparativa de arquitectura aerodinámica, propulsión, sensores y doctrina operativa
+                entre dos de los principales cazas furtivos de superioridad aérea.
+            </p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="grid">
+            <article class="card">
+                <span class="card-tag">Estados Unidos</span>
+                <h2>Lockheed Martin F-22 Raptor</h2>
+                <div class="role">Superioridad aérea y dominio del espacio aéreo</div>
+                <p class="description">
+                    El F-22 Raptor es un caza furtivo bimotor diseñado para mantener superioridad aérea
+                    en entornos altamente disputados. Combina baja observabilidad al radar, fusión de
+                    sensores y alta maniobrabilidad mediante toberas de empuje vectorial bidimensional.
+                </p>
+
+                <div class="specs-title">Especificaciones clave</div>
+                <ul class="specs-list">
+                    <li>
+                        <strong>Propulsión</strong>
+                        2&times; Pratt &amp; Whitney F119-PW-100 con control de empuje vectorial.
+                    </li>
+                    <li>
+                        <strong>Supercrucero</strong>
+                        Vuelo supersónico sostenido sin necesidad de utilizar postcombustión.
+                    </li>
+                    <li>
+                        <strong>Armamento interno</strong>
+                        Bodegas internas para misiles aire-aire (AIM-120, AIM-9) y cañón M61A2 de 20 mm.
+                    </li>
+                    <li>
+                        <strong>Aviónica</strong>
+                        Radar AESA AN/APG-77 con baja probabilidad de intercepción.
+                    </li>
+                </ul>
+            </article>
+
+            <article class="card accent-alt">
+                <span class="card-tag">China</span>
+                <h2>Chengdu J-20 Mighty Dragon</h2>
+                <div class="role">Superioridad aérea e interceptación de largo alcance</div>
+                <p class="description">
+                    El Chengdu J-20 es un caza furtivo bimotor de configuración canard-delta concebido
+                    para operaciones de gran radio de acción, penetración furtiva e intercepción de
+                    aeronaves de apoyo estratégico como cisternas y plataformas AWACS.
+                </p>
+
+                <div class="specs-title">Especificaciones clave</div>
+                <ul class="specs-list">
+                    <li>
+                        <strong>Diseño aerodinámico</strong>
+                        Ala en delta acoplada con planos canard delanteros y derivas totalmente móviles.
+                    </li>
+                    <li>
+                        <strong>Alcance operativo</strong>
+                        Amplia capacidad interna de combustible orientada a misiones de larga distancia.
+                    </li>
+                    <li>
+                        <strong>Armamento interno</strong>
+                        Bodega principal y bodegas laterales para misiles PL-15 (largo alcance) y PL-10.
+                    </li>
+                    <li>
+                        <strong>Sensores</strong>
+                        Radar AESA, sistema electro-óptico de apertura distribuida (EODAS) y sensor IRST.
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </main>
+</body>
+
+</html>
